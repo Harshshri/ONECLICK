@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>One Click Download</title>
+</head>
+<body>
+  <!-- Optional: you can delete this text if you want literally no UI -->
+  <p style="display:none;">Click anywhere to start download.</p>
+
+  <script>
+    // ✅ CHANGE THIS to the raw GitHub file URL you want to download
+    const fileUrl = "https://github.com/USER/REPO/raw/BRANCH/path/to/file.ext";
+    // Example:
+    // const fileUrl = "https://github.com/harshshri/my-files/raw/main/build/app.apk";
+
+    // Trigger download on first click anywhere on the page
+    document.addEventListener("click", function () {
+      // Create a hidden link and "click" it
+      const a = document.createElement("a");
+      a.href = fileUrl;
+      a.download = ""; // let browser use the default filename
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, { once: true }); // only run once
+  </script>
+</body>
+</html>
